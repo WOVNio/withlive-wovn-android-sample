@@ -21,7 +21,10 @@ class MainActivity : ComponentActivity() {
     @RequiresApi(Build.VERSION_CODES.Q)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        Wovn.changeToSystemLang { _: String? ->
+//        Wovn.changeToSystemLang { _: String? ->
+//            show()
+//        }
+        Wovn.changeLang("en") { _: String? ->
             show()
         }
         Log.d("WOVN-DEBUG", "Wovn.SDK_VERSION: " + Wovn.SDK_VERSION)
