@@ -21,24 +21,27 @@ class MainActivity : ComponentActivity() {
     @RequiresApi(Build.VERSION_CODES.Q)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContent {
+        Wovn.changeToSystemLang { _: String? ->
+            show()
+        }
+        Log.d("WOVN-DEBUG", "Wovn.SDK_VERSION: " + Wovn.SDK_VERSION)
+        Wovn.setPermission(WovnPermission.all, true)
+    }
+    private fun show(){
+        this.setContent {
             WovnSampleTheme {
-                // A surface container using the 'background' color from the theme
                 Surface(modifier = Modifier.fillMaxSize(), color = MaterialTheme.colorScheme.background) {
                     Greeting("Android")
                 }
             }
         }
-        Log.d("WOVN-DEBUG", "Wovn.SDK_VERSION: " + Wovn.SDK_VERSION)
-        Wovn.setPermission(WovnPermission.all, true)
-        Wovn.changeToSystemLang()
     }
 }
 
 @Composable
 fun Greeting(name: String, modifier: Modifier = Modifier) {
     Text(
-            text = "こんにちは！ アンドロイド!",
+            text = Wovn.translateInMainThread("こんにちは！ ${name}!", "ScreenName"),
             modifier = modifier
     )
 }
