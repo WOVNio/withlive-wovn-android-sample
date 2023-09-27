@@ -5,7 +5,7 @@ import io.wovn.wovnapp.WovnActivityLifecycleCallbacks
 
 class MainApplication: Application() {
     override fun onCreate() {
-        this.registerActivityLifecycleCallbacks(WovnActivityLifecycleCallbacks())
         super.onCreate()
+        this.registerActivityLifecycleCallbacks(WovnActivityLifecycleCallbacks())
     }
 }
