@@ -2,10 +2,12 @@ package com.example.wovnsample
 
 import android.os.Build
 import android.os.Bundle
+import android.util.Log
 import android.widget.Button
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.annotation.RequiresApi
+import io.wovn.wovnapp.Wovn
 
 
 class MainActivity : AppCompatActivity() {
@@ -20,5 +22,6 @@ class MainActivity : AppCompatActivity() {
             findViewById<TextView>(R.id.helloTextView).text = if(count % 2 == 0)  "こんにちは日本" else "こんにちはイングランド"
             findViewById<TextView>(R.id.helloTextView2).text = if(count % 2 == 0)  "こんにちは、WOVN" else "こんにちは、WithLive"
         }
+        Log.d("WOVN-DEBUG", "Wovn.SDK_VERSION: " + Wovn.SDK_VERSION)
     }
 }
