@@ -2,31 +2,23 @@ package com.example.wovnsample
 
 import android.os.Build
 import android.os.Bundle
-import android.util.Log
 import android.widget.Button
+import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.annotation.RequiresApi
-import io.wovn.wovnapp.Wovn
-import io.wovn.wovnapp.WovnPermission
 
 
 class MainActivity : AppCompatActivity() {
     @RequiresApi(Build.VERSION_CODES.Q)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        Wovn.setPermission(WovnPermission.all, true)
-        Wovn.changeToSystemLang()
         setContentView(R.layout.activity_main)
-        Log.d("WOVN-DEBUG", "Wovn.SDK_VERSION: " + Wovn.SDK_VERSION)
+        var count = 0
 
-        val japaneseButton = findViewById<Button>(R.id.ja)
-        val englishButton = findViewById<Button>(R.id.en)
-
-        japaneseButton.setOnClickListener {
-            Wovn.changeLang("ja")
-        }
-        englishButton.setOnClickListener {
-            Wovn.changeLang("en")
+        findViewById<Button>(R.id.updateText).setOnClickListener {
+            ++count
+            findViewById<TextView>(R.id.helloTextView).text = if(count % 2 == 0)  "こんにちは日本" else "こんにちはイングランド"
+            findViewById<TextView>(R.id.helloTextView2).text = if(count % 2 == 0)  "こんにちは、WOVN" else "こんにちは、WithLive"
         }
     }
 }
