@@ -23,5 +23,15 @@ class MainActivity : AppCompatActivity() {
             findViewById<TextView>(R.id.helloTextView2).text = if(count % 2 == 0)  "こんにちは、WOVN" else "こんにちは、WithLive"
         }
         Log.d("WOVN-DEBUG", "Wovn.SDK_VERSION: " + Wovn.SDK_VERSION)
+        findViewById<Button>(R.id.en).setOnClickListener {
+            Wovn.changeLang("en") { resultLang ->
+                Log.d("WOVN-DEBUG", "changeLang callback: $resultLang")
+            }
+        }
+        findViewById<Button>(R.id.ja).setOnClickListener {
+            Wovn.changeLang("ja") { resultLang ->
+                Log.d("WOVN-DEBUG", "changeLang callback: $resultLang")
+            }
+        }
     }
 }
